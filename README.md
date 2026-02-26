@@ -1,44 +1,32 @@
 # Medaryon
 
-Medaryon è un progetto sviluppato per dimostrare le potenzialità di **Moleculer.js** nell’ambito delle architetture a microservizi.  
-Si tratta di una piattaforma pensata per il dominio **medicale**, che raccoglie in un unico ecosistema diversi servizi: gestione utenti, prenotazione appuntamenti, disponibilità dei dottori, caricamento referti, sistema di notifiche e monitoraggio attività.
-
-L’obiettivo è duplice:
-1. Mostrare come Moleculer consenta di creare applicazioni distribuite scalabili e modulari.
-2. Produrre un esempio concreto e facilmente estendibile che integri più microservizi con logiche reali di coordinamento.
+Medaryon è una piattaforma a **microservizi** per il dominio medicale, costruita con **Moleculer.js**.  
+Raccoglie in un unico ecosistema la gestione utenti, prenotazione appuntamenti, disponibilità dei dottori, referti medici, notifiche e monitoraggio delle attività.
 
 ---
 
-## Architettura generale
+## Panoramica del repository
 
-Ogni microservizio di Medaryon è indipendente, ma interconnesso tramite il broker di Moleculer.  
-Questo consente di avviarli separatamente, ridistribuirli su più nodi e bilanciare il carico in maniera automatica.
-
-L’attivazione dei servizi è gestita tramite **dotenv**: in base alle variabili di ambiente è possibile decidere quali servizi avviare su un nodo specifico.
-
----
-
-## Servizi implementati
-
-- **users** → gestione degli utenti (registrazione, login, ruoli)  
-- **appointments** → prenotazione e gestione degli appuntamenti  
-- **availability** → disponibilità e orari dei dottori  
-- **reports** → caricamento e accesso ai referti medici  
-- **notifications** → invio di notifiche (email, push, logiche custom)  
-- **activity-logs** → tracciamento delle operazioni effettuate  
-- **gateway** → API gateway che espone i servizi all’esterno  
-
----
-
-## Struttura delle directory
-
-Ogni servizio ha una propria cartella con questa struttura base:
-
-```text
-/nome-servizio
-service.js     # definizione principale del servizio Moleculer
-actions/       # azioni esposte dal servizio
-events/        # eventi ascoltati o emessi
-models/        # definizione dei modelli dati
-utils/         # funzioni di supporto
 ```
+medaryon/               → codice sorgente dell'applicazione (Node.js / Moleculer)
+side_services/          → infrastruttura di supporto (MySQL, NATS, Traefik via Docker Compose)
+python_test_e2e/        → test end-to-end e stress test in Python
+```
+
+---
+
+## Documentazione per sotto-cartella
+
+| Cartella | Descrizione | README |
+|---|---|---|
+| [`medaryon/`](./medaryon/README.md) | Codice sorgente, architettura e avvio dell'applicazione | [📖 Leggi](./medaryon/README.md) |
+| [`side_services/`](./side_services/README.md) | Infrastruttura (database, message broker, reverse proxy) | [📖 Leggi](./side_services/README.md) |
+| [`python_test_e2e/`](./python_test_e2e/README.md) | Test E2E e stress test | [📖 Leggi](./python_test_e2e/README.md) |
+
+---
+
+## Avvio rapido
+
+1. Avvia l'infrastruttura → [`side_services/`](./side_services/README.md)
+2. Avvia l'applicazione → [`medaryon/`](./medaryon/README.md)
+3. Esegui i test → [`python_test_e2e/`](./python_test_e2e/README.md)
