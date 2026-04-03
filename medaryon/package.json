@@ -42,7 +42,7 @@
     "yaml": "^2.8.3"
   },
   "engines": {
-    "node": ">= 16.x.x"
+    "node": ">= 18.14.0"
   },
   "jest": {
     "coverageDirectory": "../coverage",
