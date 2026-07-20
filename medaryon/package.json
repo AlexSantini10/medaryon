@@ -17,7 +17,7 @@
     "microservices",
     "moleculer"
   ],
-  "author": "",
+  "author": "Alex Santini",
   "devDependencies": {
     "eslint": "^8.25.0",
     "jest": "^27.5.1",
